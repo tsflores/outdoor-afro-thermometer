@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outdoor Afro Fund Raising</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #334031;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 20px;
+        }
+        
+        .controls {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+        
+        .controls h2 {
+            color: #334031;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #334031;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #7FB069;
+        }
+        
+        .instructions {
+            background: #f0f9ff;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #3b82f6;
+            margin-top: 20px;
+        }
+        
+        .instructions h3 {
+            color: #1e40af;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+            color: #1e3a8a;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        
+        .preview {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .preview h2 {
+            color: #334031;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        #thermometer {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+        
+        .copy-hint {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #dcfce7;
+            color: #166534;
+            border-radius: 5px;
+            font-size: 13px;
+            text-align: center;
+        }
+        
+        .copy-btn {
+            margin-top: 12px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: none;
+            background: #7FB069;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .copy-btn.secondary {
+            background: #334031;
+        }
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌡️ Fundraising Thermometer Generator</h1>
+            <p>Update the values below to generate a custom thermometer</p>
+        </div>
+        
+        <div class="content">
+            <div class="controls">
+                <h2>Update Values</h2>
+
+                 <div class="form-group">
+                    <label>Fiscal Year</label>
+                    <input type="number" id="fiscal-year" value="2025" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label>Goal Amount ($)</label>
+                    <input type="number" id="goal" value="2900000" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label>Amount Raised ($)</label>
+                    <input type="number" id="raised" value="1600000" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label>Pledges ($)</label>
+                    <input type="number" id="pledges" value="750000" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label>Grants ($)</label>
+                    <input type="number" id="grants" value="300000" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label>Other Revenue ($)</label>
+                    <input type="number" id="other" value="25000" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label>As of Date</label>
+                    <input type="text" id="asOfDate" value="Sept 30">
+                </div>
+                
+                <div class="instructions">
+                    <h3>📋 How to Use:</h3>
+                    <ol>
+                        <li>Update the values in the form above</li>
+                        <li>The thermometer updates automatically</li>
+                        <li>Use the "Copy Image" button at the bottom to save to clipboard</li>
+                        <li>Paste directly into PowerPoint</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="preview">
+                <h2>Exhibit</h2>
+                <svg id="thermometer" viewBox="0 0 300 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Content will be generated by JavaScript -->
+                </svg>
+                <div style="display:flex; gap:8px; justify-content:center; margin-top:8px;">
+                    <button id="copy-svg-btn" class="copy-btn" title="Copy SVG (attempts to copy vector SVG and PNG)">Copy Image (PowerPoint)</button>
+                    <button id="download-svg-btn" class="copy-btn secondary" title="Download raw SVG file">Download Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function formatCurrency(value) {
+            return '$' + (value / 1000000).toFixed(2) + 'M';
+        }
+
+        function formatTextCurrency(value) {
+            return '$' + (value / 1000).toFixed(0) + 'K';
+        }
+        
+        function updateThermometer() {
+            const fiscal_year_input = parseInt(document.getElementById('fiscal-year').value);
+            const fiscal_year = Math.max(0, isNaN(fiscal_year_input) ? 2025 : fiscal_year_input);
+
+            const goal_input = parseFloat(document.getElementById('goal').value);
+            const goal = Math.max(0, isNaN(goal_input) ? 2900000 : goal_input);
+
+            const raised_input = parseFloat(document.getElementById('raised').value);
+            const raised = Math.max(0, isNaN(raised_input) ? 1600000 : raised_input);
+
+            const pledges_input = parseFloat(document.getElementById('pledges').value);
+            const pledges = Math.max(0, isNaN(pledges_input) ? 750000 : pledges_input);
+
+            const grants_input = parseFloat(document.getElementById('grants').value);
+            const grants = Math.max(0, isNaN(grants_input) ? 300000 : grants_input);
+
+            const other_input = parseFloat(document.getElementById('other').value);
+            const other = Math.max(0, isNaN(other_input) ? 25000 : other_input);
+
+            const asOfDate = document.getElementById('asOfDate').value || 'Sept 30';
+            
+            // update fiscal year to grab last 2 integers
+            const fiscalYearShort = fiscal_year.toString().slice(-2);
+
+            // Calculate percentages and heights
+            const tubeHeight = 400;
+            const tubeBottom = 120;
+            
+            const raisedPercent = (raised / goal);
+            const pledgesPercent = (pledges / goal);
+            const grantsPercent = (grants / goal);
+            const othersPercent = (other / goal);
+            
+            // Compute raw heights (may exceed tube) and then clamp so stacked fills never exceed the tube height
+            const rawRaisedHeight = raisedPercent * tubeHeight;
+            const rawPledgesHeight = pledgesPercent * tubeHeight;
+            const rawGrantsHeight = grantsPercent * tubeHeight;
+            const rawOthersHeight = othersPercent * tubeHeight;
+
+            let remainingTube = tubeHeight;
+            const raisedHeight = Math.max(0, Math.min(rawRaisedHeight, remainingTube));
+            remainingTube -= raisedHeight;
+            const pledgesHeight = Math.max(0, Math.min(rawPledgesHeight, remainingTube));
+            remainingTube -= pledgesHeight;
+            const grantsHeight = Math.max(0, Math.min(rawGrantsHeight, remainingTube));
+            remainingTube -= grantsHeight;
+            const othersHeight = Math.max(0, Math.min(rawOthersHeight, remainingTube));
+            remainingTube -= othersHeight;
+
+            // Calculate Y positions (SVG coordinates from top) using clamped heights so fills stack correctly
+            const raisedY = tubeBottom + tubeHeight - raisedHeight;
+            const pledgesY = raisedY - pledgesHeight;
+            const grantsY = pledgesY - grantsHeight;
+            
+            const totalWithPledges = raised + pledges;
+            const totalProjected = raised + pledges + grants + other;
+            
+            const raisedPercentDisplay = Math.round(raisedPercent * 100);
+
+            // Threshold below which we collapse small category labels into a footnote
+            const THRESHOLD = 150001;
+
+            // Build footnote parts for small amounts (pledges/grants/other)
+            const footnoteParts = [];
+            if (other > 0) {
+                footnoteParts.push(`Other: ${formatTextCurrency(other)}`);
+            }
+            if (pledges > 0 && pledges < THRESHOLD) {
+                footnoteParts.push(`Pledges: ${formatTextCurrency(pledges)}`);
+            }
+            if (grants > 0 && grants < THRESHOLD) {
+                footnoteParts.push(`Grants: ${formatTextCurrency(grants)}`);
+            }
+
+            // Render a single-line footnote (joined with bullets) if any parts exist
+            const footnoteSVG = footnoteParts.length ? `\n    <text x="105" y="585" font-family="Arial, sans-serif" font-size="8" fill="#B8C5B8" text-anchor="middle">* ${footnoteParts.join(' \u2022 ')}</text>` : '';
+
+            
+            // Build marker snippets to avoid nested template literals
+            let grantsMarkerSVG = '';
+            if (grants > 0) {
+                grantsMarkerSVG = '\n    <!-- Grants marker -->\n    <line x1="40" y1="' + grantsY + '" x2="160" y2="' + grantsY + '" stroke="#A8D5A8" stroke-width="3" stroke-dasharray="5,5"/>';
+                if (grants > 60000) {
+                    grantsMarkerSVG += '\n    <text x="162" y="' + (grantsY+2) + '" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#A8D5A8" text-anchor="start">' + formatCurrency(totalProjected) + '</text>';
+                    if (grants >= THRESHOLD) {
+                        grantsMarkerSVG += '\n    <text x="162" y="' + (grantsY + 10) + '" font-family="Arial, sans-serif" font-size="6" fill="#A8D5A8" text-anchor="start">(w/ ' + formatTextCurrency(grants) + ' Grants)</text>';
+                    }
+                }
+            }
+
+            let pledgesMarkerSVG = '';
+            if (pledges > 0) {
+                pledgesMarkerSVG = '\n    <!-- Projected total marker -->\n    <line x1="40" y1="' + pledgesY + '" x2="160" y2="' + pledgesY + '" stroke="#A8D5A8" stroke-width="3" stroke-dasharray="5,5"/>';
+                if (grants <= 60000) {
+                    pledgesMarkerSVG += '\n    <text x="162" y="' + (pledgesY - 6) + '" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#A8D5A8" text-anchor="start">' + formatCurrency(totalProjected) + '</text>';
+                }
+                if (pledges > 60000) {
+                    pledgesMarkerSVG += '\n    <text x="162" y="' + (pledgesY +2) + '" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#A8D5A8" text-anchor="start">' + formatCurrency(totalWithPledges) + '</text>';
+                    if (pledges >= THRESHOLD) {
+                        pledgesMarkerSVG += '\n    <text x="162" y="' + (pledgesY + 10) + '" font-family="Arial, sans-serif" font-size="6" fill="#A8D5A8" text-anchor="start">(w/ ' + formatTextCurrency(pledges) + ' Pledges)</text>';
+                    }
+                }
+            }
+
+            // Generate SVG
+            const svg = `
+  <!-- Background -->
+  <rect width="300" height="600" fill="#334031"/>
+  
+  <!-- Title -->
+  <text x="175" y="35" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#E8F4E8" text-anchor="middle">
+    FY${fiscalYearShort} Funds Raised
+  </text>
+  
+    <!-- Thermometer tube background -->
+    <rect x="70" y="120" width="60" height="400" rx="30" fill="#4A5A48" opacity="0.5"/>
+
+    <!-- Patterns and clip for rounded tube -->
+    <defs>
+        <pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8">
+            <path d="M-2,2 l4,-4 M0,8 l8,-8 M6,10 l4,-4" stroke="#A8D5A8" stroke-width="2"/>
+        </pattern>
+        <pattern id="hatch-reverse" patternUnits="userSpaceOnUse" width="8" height="8">
+            <path d="M0,0 l8,8 M-2,6 l4,4 M6,-2 l4,4" stroke="#E8F4E8" stroke-width="2"/>
+        </pattern>
+        <clipPath id="tubeClip">
+            <rect x="70" y="120" width="60" height="400" rx="30" />
+        </clipPath>
+    </defs>
+
+    <!-- Thermometer fills (clipped to tube shape so they conform to the rounded top) -->
+    <g clip-path="url(#tubeClip)">
+        <rect x="70" y="${raisedY}" width="60" height="${raisedHeight}" fill="#7FB069"/>
+        <rect x="70" y="${pledgesY}" width="60" height="${pledgesHeight}" fill="url(#hatch)"/>
+        <rect x="70" y="${grantsY}" width="60" height="${grantsHeight}" fill="url(#hatch-reverse)"/>
+    </g>
+
+    <!-- Thermometer bulb (drawn last so it visually overlays the tube bottom) -->
+    <circle cx="100" cy="520" r="50" fill="#7FB069"/>
+
+    <!-- Goal amount placed above the thermometer (removed the horizontal goal line) -->
+    <text x="100" y="105" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#B8C5B8" text-anchor="middle">
+        ${formatCurrency(goal)} Goal
+    </text>
+  
+    ${grantsMarkerSVG}
+
+    ${pledgesMarkerSVG}
+  <!-- Current level marker -->
+  <line x1="40" y1="${raisedY}" x2="160" y2="${raisedY}" stroke="#E8F4E8" stroke-width="3"/>
+  <text x="162" y="${raisedY +2}" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#7FB069" text-anchor="start">
+    ${formatCurrency(raised)}
+  </text>
+  <text x="162" y="${raisedY + 10}" font-family="Arial, sans-serif" font-size="6" fill="#B8C5B8" text-anchor="start">
+    (as of ${asOfDate})
+  </text>
+  
+  <!-- Percentage label -->
+  <text x="100" y="${raisedY + raisedHeight/2}" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#E8F4E8" text-anchor="middle">
+    ${raisedPercentDisplay}%
+  </text>
+  <text x="100" y="${raisedY + raisedHeight/2 + 25}" font-family="Arial, sans-serif" font-size="12" fill="#E8F4E8" text-anchor="middle">
+    raised
+  </text>
+  
+        <!-- Legend (lower-right): side-by-side with subtle background for contrast -->
+        <g id="legend" transform="translate(160,480)">
+            <!-- background box -->
+            <rect x="20" y="-8" width="80" height="70" rx="6" fill="#000" opacity="0.22"/>
+
+            <!-- Pledges (left) -->
+            <rect x="30" y="6" width="18" height="12" fill="url(#hatch)"/>
+            <text x="55" y="16" font-family="Arial, sans-serif" font-size="10" fill="#E8F4E8" text-anchor="start">Pledges</text>
+
+            <!-- Grants (right) -->
+            <rect x="30" y="36" width="18" height="12" fill="url(#hatch-reverse)"/>
+            <text x="55" y="46" font-family="Arial, sans-serif" font-size="10" fill="#E8F4E8" text-anchor="start">Grants</text>
+        </g>
+       
+        <!-- Footnotes for small categories (Other / small pledges/grants) -->
+        ${footnoteSVG}
+            `;
+            
+            document.getElementById('thermometer').innerHTML = svg;
+        }
+        
+        // Local storage key and helpers to persist form values across reloads
+        const STORAGE_KEY = 'thermometerInputs';
+
+        function saveInputsToLocalStorage() {
+            const payload = {
+                fiscalYear: document.getElementById('fiscal-year').value,
+                goal: document.getElementById('goal').value,
+                raised: document.getElementById('raised').value,
+                pledges: document.getElementById('pledges').value,
+                grants: document.getElementById('grants').value,
+                other: document.getElementById('other').value,
+                asOfDate: document.getElementById('asOfDate').value
+            };
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+            } catch (e) {
+                // localStorage may be unavailable (private mode), silently ignore
+                console.warn('Could not save inputs to localStorage', e);
+            }
+        }
+
+        function loadInputsFromLocalStorage() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return;
+                const payload = JSON.parse(raw);
+                if (!payload) return;
+
+                if (payload.fiscalYear !== undefined) document.getElementById('fiscal-year').value = payload.fiscalYear;
+                if (payload.goal !== undefined) document.getElementById('goal').value = payload.goal;
+                if (payload.raised !== undefined) document.getElementById('raised').value = payload.raised;
+                if (payload.pledges !== undefined) document.getElementById('pledges').value = payload.pledges;
+                if (payload.grants !== undefined) document.getElementById('grants').value = payload.grants;
+                if (payload.other !== undefined) document.getElementById('other').value = payload.other;
+                if (payload.asOfDate !== undefined) document.getElementById('asOfDate').value = payload.asOfDate;
+            } catch (e) {
+                console.warn('Could not load inputs from localStorage', e);
+            }
+        }
+
+        // Debounced save to reduce frequent localStorage writes
+        const SAVE_DEBOUNCE_MS = 500;
+        let _saveTimeout = null;
+        function debouncedSave() {
+            if (_saveTimeout) clearTimeout(_saveTimeout);
+            _saveTimeout = setTimeout(() => {
+                try { saveInputsToLocalStorage(); } finally { _saveTimeout = null; }
+            }, SAVE_DEBOUNCE_MS);
+        }
+
+        // Generic input handler that updates the thermometer and schedules a debounced save
+        function onInputChange() {
+            updateThermometer();
+            debouncedSave();
+        }
+
+        // Wire up inputs to the generic handler
+        document.getElementById('fiscal-year').addEventListener('input', onInputChange);
+        document.getElementById('goal').addEventListener('input', onInputChange);
+        document.getElementById('raised').addEventListener('input', onInputChange);
+        document.getElementById('pledges').addEventListener('input', onInputChange);
+        document.getElementById('grants').addEventListener('input', onInputChange);
+        document.getElementById('other').addEventListener('input', onInputChange);
+        document.getElementById('asOfDate').addEventListener('input', onInputChange);
+
+        // Ensure any pending changes are saved when the page is being closed or unloaded
+        window.addEventListener('beforeunload', function() {
+            // If a debounced save is pending, clear it and perform an immediate save
+            if (_saveTimeout) { clearTimeout(_saveTimeout); _saveTimeout = null; }
+            try { saveInputsToLocalStorage(); } catch (e) { /* ignore */ }
+        });
+
+        // Load saved values (if any) and render
+        loadInputsFromLocalStorage();
+        updateThermometer();
+        
+
+        async function copySvgToClipboard() {
+            const svgEl = document.getElementById('thermometer');
+            if (!svgEl) { alert('SVG not found'); return; }
+
+            let svgData = new XMLSerializer().serializeToString(svgEl);
+            if (!/xmlns="http:\/\/www.w3.org\/2000\/svg"/.test(svgData)) {
+                svgData = svgData.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+            }
+
+            const svgBlob = new Blob([svgData], { type: 'image/svg+xml' });
+
+            // Try to write both SVG (vector) and PNG (raster) to clipboard so PowerPoint can accept the paste
+            try {
+                const viewBox = svgEl.getAttribute('viewBox');
+                let width = 350, height = 600;
+                if (viewBox) {
+                    const parts = viewBox.split(/\s+/).map(Number);
+                    if (parts.length === 4) { width = parts[2]; height = parts[3]; }
+                }
+
+                const canvas = document.createElement('canvas');
+                canvas.width = width;
+                canvas.height = height;
+                const img = new Image();
+
+                img.onload = async function() {
+                    try {
+                        const ctx = canvas.getContext('2d');
+                        ctx.clearRect(0,0,canvas.width,canvas.height);
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        canvas.toBlob(async function(pngBlob) {
+                            try {
+                                const items = {};
+                                items['image/svg+xml'] = svgBlob;
+                                if (pngBlob) items['image/png'] = pngBlob;
+                                await navigator.clipboard.write([new ClipboardItem(items)]);
+                                alert('SVG and PNG copied to clipboard. Paste into PowerPoint (Ctrl+V).');
+                            } catch (err) {
+                                // fallback: copy svg text
+                                try {
+                                    await navigator.clipboard.writeText(svgData);
+                                    alert('Could not write image to clipboard. SVG markup copied as text. Use Download SVG to save the file.');
+                                } catch (err2) {
+                                    const ta = document.createElement('textarea');
+                                    ta.value = svgData;
+                                    document.body.appendChild(ta);
+                                    ta.select();
+                                    try { document.execCommand('copy'); alert('SVG markup copied to clipboard as text.'); } catch(e) { alert('Copy failed. Use Download SVG button.'); }
+                                    document.body.removeChild(ta);
+                                }
+                            }
+                        }, 'image/png');
+                    } catch (err) {
+                        try { await navigator.clipboard.writeText(svgData); alert('SVG markup copied to clipboard as text.'); } catch(e) { alert('Copy failed. Use Download SVG button.'); }
+                    }
+                };
+
+                img.onerror = async function() {
+                    try { await navigator.clipboard.writeText(svgData); alert('SVG markup copied to clipboard as text.'); } catch(e) { alert('Copying failed. Use Download SVG button.'); }
+                };
+
+                img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgData);
+            } catch (err) {
+                try { await navigator.clipboard.writeText(svgData); alert('SVG markup copied to clipboard as text.'); } catch(e) { alert('Copy failed. Use Download SVG button.'); }
+            }
+        }
+
+        function downloadSvg() {
+            const svgEl = document.getElementById('thermometer');
+            if (!svgEl) { alert('SVG not found'); return; }
+            let svgData = new XMLSerializer().serializeToString(svgEl);
+            if (!/xmlns="http:\/\/www.w3.org\/2000\/svg"/.test(svgData)) {
+                svgData = svgData.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+            }
+            const blob = new Blob([svgData], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'thermometer.svg';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Wire up buttons
+        document.getElementById('copy-svg-btn').addEventListener('click', copySvgToClipboard);
+        document.getElementById('download-svg-btn').addEventListener('click', downloadSvg);
+    </script>
+</body>
+</html>

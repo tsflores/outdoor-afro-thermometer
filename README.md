@@ -5,7 +5,7 @@ A dynamic exhibit that allows Outdoor Afro (https://outdoorafro.org/) to update 
 This version utlilizes a simple server that makes the API call to TMDB as a way of masking token on the client-side.
 
 ## Live Demo
-[Play SnoMan](https://trinidads-portfolio.com/SnoMan/index.html)
+[Thermometer](https://tsflores.github.io/outdoor-afro-thermometer/)
 
 ## Features
 - Dynamic exhibit as text entries are updated
